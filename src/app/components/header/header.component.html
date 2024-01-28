@@ -1,0 +1,18 @@
+<div fxLayout="row" class="main-navbar">
+  <div fxFlex="30" class="l-side" fxLayoutGap="8px" fxLayout="row">
+    <div (click)="triggerSidenav()" class="button-sort">
+      <mat-icon>sort</mat-icon>
+    </div>
+    <h1>{{mainconfig.menuSelected}}</h1>
+  </div>
+  <div fxFlex class="r-side" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="end">
+    <button mat-icon-button (click)="logout()" matTooltip="Logout"><mat-icon color="primary">logout</mat-icon></button>
+    <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
+      <img src="../../../assets/undraw_pic_profile_re_7g2h.svg" width="40" height="40" alt="Profile Image">
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item style="font-weight: bolder;"><mat-icon>information</mat-icon>User Info</button>
+      <button mat-menu-item style="font-weight: bolder;"  (click)="logout()"><mat-icon >logout</mat-icon>Logout</button>
+    </mat-menu> -->
+  </div>
+</div>

@@ -1,0 +1,99 @@
+.main-sidenav {
+  height: 100%;
+  background: linear-gradient(to bottom right, #3F51B5, #161C98);
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: width 250ms ease-in-out, transform 250ms ease-in-out;
+
+  .logo-layout {
+    margin: 8px 8px 0 8px;
+    padding: 10px;
+    display: flex;
+    height: 10%;
+    align-items: center;
+
+    h1 {
+      color: white;
+      font-size: 17px;
+      margin-left: 8px;
+      line-height: 1.5;
+      margin-top: 15px;
+    }
+
+    .logo-img {
+      display: flex;
+      height: 70%;
+    }
+  }
+
+  .menu-list {
+    margin-top: 40px;
+    margin-left: 10px;
+  }
+
+}
+
+
+.menu-icon-transition {
+  -webkit-transition: margin 0.5s;
+  transition: margin 0.5s;
+  color: white;
+  /* font-size:15px */
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 19px;
+  width: 24px;
+}
+
+.menu-icon-transition:hover {
+  color: white;
+}
+
+.menu-icon-transition[hide="true"] {
+  margin-left: 4px;
+  color: white;
+  margin-right: 0px;
+}
+
+.menu-title-transition {
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  color: white;
+  overflow: hidden;
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.menu-title-transition[hide="true"] {
+  opacity: 0;
+  width: 0;
+  color: white;
+}
+
+
+.button-transition {
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+  justify-content: start;
+  width: 100%;
+
+  &:hover {
+    color: white;
+
+    >div>div,
+    >div>mat-icon {
+      color: transparent !important;
+    }
+  }
+
+  >div>div,
+  >div>mat-icon {
+    -webkit-transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
+  }
+}

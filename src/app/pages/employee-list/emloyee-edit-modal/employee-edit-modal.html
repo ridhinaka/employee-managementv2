@@ -1,0 +1,28 @@
+<mat-dialog-content fxLayout="column" fxLayoutGap="8px" class="container">
+    <div fxLayout="row" fxLayoutGap="8px">
+        <div fxFlex="95" class="l-header">
+            <p class="text">Edit Employee</p>
+        </div>
+
+        <div fxFlex fxLayoutAlign="end">
+            <button mat-icon-button (click)="closeDialog()">
+                <mat-icon color="warn">close</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="form-div">
+        <app-form-employee [style.width]="'100%'"
+            [triggerDataEmployeeBehaviorSubject]="triggerDataEmployeeBehaviorSubject"
+            [setDataEditEmployeeBehaviorSubject]="setDataEditEmployeeBehaviorSubject" [(dataEmployee)]="dataEmployee">
+        </app-form-employee>
+    </div>
+
+
+    <div fxLayout="row" fxLayoutAlign="end">
+        <button mat-raised-button color="primary" (click)="updateEmployee()">Update</button>
+    </div>
+
+</mat-dialog-content>

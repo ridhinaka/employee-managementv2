@@ -1,0 +1,19 @@
+<mat-card class="container" fxLayoutGap="8px">
+
+
+    <mat-card-content fxLayout="row" fxLayoutGap="10px" >
+        <app-form-employee 
+            [style.width]="'100%'" 
+            [triggerDataEmployeeBehaviorSubject]="triggerDataEmployeeBehaviorSubject" 
+            [(dataEmployee)]="dataEmployee"
+            [(dataInvalid)]="dataInvalid">
+        </app-form-employee>
+    </mat-card-content>
+
+    <mat-card-actions fxLayoutAlign="end end" fxLayoutGap="8px">
+        <button mat-stroked-button color="warn" (click)="cancelCreate()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="registerNewEmployee()">Register Employee</button>
+    </mat-card-actions>
+</mat-card>
+
+<app-spinner [disappearing]="true"></app-spinner>

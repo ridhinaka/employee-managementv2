@@ -1,0 +1,13 @@
+<div fxLayoutAlign="start stretch" fxLayout="row" class="container">
+    
+    <app-sidenav [valueSidenav]="valueSidenav"></app-sidenav>
+    <div fxFlex fxLayout="column" fxLayoutAlign="start stretch" class="main-content">
+      <app-header (toggleSideNav)="toggleSidenv($event)"></app-header>
+  
+      <div fxFlex class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  
+  </div>
+  

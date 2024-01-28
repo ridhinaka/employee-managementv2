@@ -1,0 +1,26 @@
+<div fxLayout="column" class="main-sidenav" [style.transform]="valueSidenav ? 'translateX(0%)' : 'translateX(-100%)'" [style.width]="valueSidenav ? '250px' : '0'">
+  <div fxLayout="row" class="logo-layout">
+    <img class="logo-img" src="../../../assets/logo.png" />
+    <h1>Employee Management</h1>
+  </div>
+
+  <div fxLayoutGap="8px" class="menu-list">
+    <ng-container *ngFor="let eachMenu of mainconfig.menuDisplay">
+        <button class="button-transition" [matTooltip]="eachMenu.title" [matTooltipPosition]="'right'" mat-button
+          (click)="routeNavigate(eachMenu)">
+          <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start" [style.color]="'white'"
+            [style.font-size.px]="16">
+            <mat-icon class="menu-icon-transition">{{
+              eachMenu["icon"]
+              }}</mat-icon>
+            <div #buttonText fxFlex class="menu-title-transition">
+                <p>  {{ eachMenu.title }}</p>
+            </div>
+          </div>
+        </button>
+    </ng-container>
+  </div>
+
+
+
+</div>

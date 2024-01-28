@@ -1,0 +1,135 @@
+<div fxLayout="column" fxLayoutGap="8px" class="container">
+    <mat-card fxLayout="row" fxLayoutGap="8px" class="header">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Search Username </mat-label>
+            <input type="text" placeholder="Search Employee by userName" aria-label="Number" matInput
+                [formControl]="searchEmployeeForm" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" (keyup.enter)="searchDetailEmployee()"
+                (optionSelected)="searchDetailEmployee()">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.userName">
+                    {{option.userName}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="searchDetailEmployee()">Search</button>
+    </mat-card>
+
+    <mat-card class="card-content" *ngIf="showDetail()">
+        <mat-card-content fxLayout="column" fxLayoutGap="10px">
+            <div fxFlex="50" fxLayoutGap="8px" fxLayout="column" class="detail-user box">
+                <img class="avatar" src="../../../assets/avatar.png" alt="avatar" />
+                <div fxLayout="column" fxLayoutGap="8px">
+                    <h1 class="h-user">{{displayDetail('firstName')}}&nbsp;{{displayDetail('lastName')}}</h1>
+                    <p class="p-group">{{displayDetail('group')}}</p>
+                </div>
+            </div>
+
+            <div fxFlex fxLayoutGap="8px" fxLayout="row">
+                <div fxFlex="50" fxLayout="column" fxLayoutGap="8px">
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">person</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1>Username</h1>
+                            <p>{{displayDetail('userName')}}</p>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">person</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1>First Name</h1>
+                            <p>{{displayDetail('firstName')}}</p>
+                        </div>
+                    </div>
+
+
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">person</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1>Last Name</h1>
+                            <p>{{displayDetail('lastName')}}</p>
+                        </div>
+                    </div>
+
+
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">email</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1>Email</h1>
+                            <p>{{displayDetail('email')}}</p>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">money</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1>Basic Salary</h1>
+                            <p>{{displayDetail('basicSalary') | currency : 'IDR' : 'symbol-narrow' : '1.0-2'}}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div fxFlex="50" fxLayout="column" fxLayoutGap="8px">
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">date_range</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1 color="primary">Birth Date</h1>
+                            <p>{{displayDetail('birthDate') | date: 'dd/MMMM/yyyy'}}</p>
+                        </div>
+                    </div>
+
+
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">date_range</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1>Description</h1>
+                            <p>{{displayDetail('description') | date: 'dd/MMMM/yyyy'}}</p>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">group</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1>Group</h1>
+                            <p>{{displayDetail('group')}}</p>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="8px" class="box">
+                        <div fxFlex.md="15" fxFlex="10" class="l-side">
+                            <mat-icon color="primary">information</mat-icon>
+                        </div>
+                        <div fxFlex fxLayout="column">
+                            <h1>Status</h1>
+                            <p> {{displayDetail('status')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </mat-card-content>
+
+        <div fxLayoutAlign="end" fxLayout="row">
+            <button mat-raised-button color="primary" class="margin-button" (click)="redirectToEmployeeList()">OK</button>
+        </div>
+    </mat-card>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>

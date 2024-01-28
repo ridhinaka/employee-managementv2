@@ -1,0 +1,95 @@
+<div fxLayoutGap="8px" [formGroup]="formEmployee" fxLayout="row" class="form-container">
+    <div fxFlex="50" fxLayout="column">
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Input" type="text" placeholder="Input Username" formControlName="userName"
+                required>
+            <mat-error *ngIf="formEmployee.controls['userName'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.userName)}}</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="Input" type="text" placeholder="Input First Name" formControlName="firstName"
+                required>
+            <mat-error *ngIf="formEmployee.controls['firstName'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.firstName)}}</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Input" type="text" placeholder="Input Last Name" formControlName="lastName"
+                required>
+            <mat-error *ngIf="formEmployee.controls['lastName'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.lastName)}}</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Input" type="email" placeholder="Input Email" formControlName="email" required>
+            <mat-error *ngIf="formEmployee.controls['email'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.email)}}</strong></mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>Basic Salary</mat-label>
+            <span matPrefix>&nbsp;&nbsp;&nbsp;Rp.</span>
+            <input matInput placeholder="Input" type="number" placeholder="Input Basic Salary"
+                formControlName="basicSalary" required>
+            <mat-error *ngIf="formEmployee.controls['basicSalary'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.basicSalary)}}</strong></mat-error>
+        </mat-form-field>
+    </div>
+
+    <div fxFlex="50" fxLayout="column">
+        <mat-form-field appearance="outline">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Input Birth Date" formControlName="birthDate"
+                (click)="picker.open()" (change)="picker.open()" (keyup)="picker.open()" [min]="minDate" readonly>
+            <mat-error *ngIf="formEmployee.controls['birthDate'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.birthDate)}}</strong></mat-error>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="pickerDescription" placeholder="Input Description"
+                formControlName="description" (click)="pickerDescription.open()" (change)="pickerDescription.open()"
+                (keyup)="pickerDescription.open()" readonly>
+            <mat-error *ngIf="formEmployee.controls['description'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.description)}}</strong></mat-error>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerDescription"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDescription></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Group</mat-label>
+            <input type="text" placeholder="Input Group" aria-label="Number" matInput [matAutocomplete]="auto"
+                formControlName="group" required>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectGroup($event)">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="formEmployee.controls['group'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.group)}}</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <mat-select matInput formControlName="status" required>
+                <mat-option *ngFor="let itemGroup of StatusList" [value]="itemGroup">
+                    {{itemGroup}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formEmployee.controls['status'].invalid">
+                <strong>{{getErrorMessage(formEmployee.controls.status)}}</strong></mat-error>
+        </mat-form-field>
+    </div>
+
+</div>

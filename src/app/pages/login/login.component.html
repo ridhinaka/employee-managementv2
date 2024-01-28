@@ -1,0 +1,30 @@
+<div fxLayout="row-reverse" class="login-container">
+    <div fxFlex="60" class="img-left">
+    </div>
+    <div fxFlex class="login">
+        <div fxFlex="40" fxLayout="column" fxLayoutGap="8px" class="login-content" [formGroup]="loginFormGroup">
+            <img src="../../../assets/logo.png" />
+            <h1>Welcome to Employee Management</h1>
+            <h1>Sign into your account</h1>
+            <mat-form-field appearance="fill">
+                <mat-icon matPrefix>person</mat-icon>
+                <mat-label>Username</mat-label>
+                <input matInput type="text" formControlName="username">
+                <mat-error *ngIf="loginFormGroup.controls['username'].hasError('required')">
+                    Username is <strong>required</strong></mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <mat-icon matPrefix> vpn_key</mat-icon>
+                <input matInput type="password" formControlName="password">
+                <mat-error *ngIf="loginFormGroup.controls['password'].hasError('required')">
+                    Password is <strong>required</strong></mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="login()">Login</button>
+
+        </div>
+    </div>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>

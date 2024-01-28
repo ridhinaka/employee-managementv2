@@ -1,0 +1,103 @@
+.container {
+    height: 100%;
+    // position: relative;
+
+    mat-card {
+        padding: 12px 12px 0 12px;
+        .l-side {
+            align-items: center;
+            display: flex;
+
+            mat-form-field {
+                width: 50%;
+                margin-top: 8px;
+            }
+        }
+
+        .r-side {
+            align-items: center;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    .table-wrapper {
+        overflow: auto;
+        height: 100%;
+        .table {
+            width: 100%;
+            th {
+                text-align: center;
+                background-color:#F7F8FA;
+                // color: #A9ACB3;
+                // font-weight: bolder;
+            }
+
+            td{
+                // color: #A5A7B6;
+            }
+        }
+    }
+
+    mat-paginator {
+        // position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.tags {
+    display: block;
+    padding: 6px 10px;
+    font-weight: 500;
+    align-items: center;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.tags-red {
+    background-color: #ffece0;
+    color: #9d440f;
+}
+
+.tags-green {
+    background-color: #e6fbef;
+    color: #069744;
+}
+
+
+
+ ::ng-deep .toast-success-condition1 {
+    background-color: #F4D201 !important; /* Color for condition 1 */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 6px;
+    padding: 15px 15px 15px 50px;
+    width: 300px;
+    border-radius: 3px 3px 3px 3px;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    box-shadow: 0 0 12px #999999;
+    font-weight: bolder;
+    color: #FFFFFF;
+  }
+  
+ ::ng-deep .toast-success-condition2 {
+    background-color: #F70000 !important; /* Color for condition 2 */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 6px;
+    padding: 15px 15px 15px 50px;
+    width: 300px;
+    border-radius: 3px 3px 3px 3px;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    box-shadow: 0 0 12px #999999;
+    font-weight: bolder;
+    color: #FFFFFF;
+  }
+  

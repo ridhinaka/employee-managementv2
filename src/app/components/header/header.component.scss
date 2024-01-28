@@ -1,0 +1,58 @@
+.main-navbar {
+  height: 8vh;
+  /* position: fixed; */
+  align-items: center;
+  width: 100%;
+  background-color: #F5F8FA;
+  /* z-index: 999; */
+
+  .l-side {
+    margin-left: 8px;
+    align-items: center;
+    .button-sort {
+      padding: 8px;
+      width: 30px;
+      display: flex;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 30px;
+      color: #3F51B5;
+      align-items: center;
+      justify-content: center;
+      &:hover {
+        cursor: pointer;
+        scale: 1.1;
+      }
+    }
+
+    h1{
+      margin-top: 17px;
+      margin-left: 8px;
+      font-size: 20px;
+    }
+
+  }
+
+
+  .r-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+
+    .counter-text {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+}
+
+.layout-option {
+  display: flex;
+  // width: 10vw;
+  align-items: center;
+  justify-content: center;
+
+  .option {
+    margin-right: 8px;
+  }
+}

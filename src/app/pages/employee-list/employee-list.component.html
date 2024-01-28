@@ -1,0 +1,104 @@
+<div fxLayout="column" fxLayoutGap="8px" class="container">
+    <mat-card fxLayout="row" fxLayoutGap="8px">
+        <div fxFlex="80" fxLayoutGap="8px" class="l-side">
+            <mat-form-field appearance="fill">
+                <mat-label>Search</mat-label>
+                <input matInput placeholder="Input" type="text" placeholder="Input userName and first name to search" [formControl]="searchData"
+                    (keyup.enter)="searchDataEmployee()">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="searchDataEmployee()">Search</button>
+        </div>
+        <div fxFlex class="r-side">
+            <button mat-raised-button color="primary" (click)="redirectToRegisterEmployee()">Add Employee</button>
+        </div>
+    </mat-card>
+
+
+    <div class="table-wrapper" fxLayoutGap="14px">
+
+            <table class="table" matSort mat-table [dataSource]="dataEmployeeList">
+                <ng-container matColumnDef="userName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center !important;">Username </th>
+                    <td mat-cell *matCellDef="let element" > {{element.userName}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="lastName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="birthDate">
+                    <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: center;">{{element.birthDate | date :
+                        'dd/MM/yy'}}
+                    </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="basicSalary">
+                    <th mat-header-cell *matHeaderCellDef>Basic Salary</th>
+                    <td mat-cell *matCellDef="let element; let i = dataIndex" style="text-align: center">
+                        {{element['basicSalary'] | currency:'IDR':'symbol-narrow':'1.0-2'}}
+                    </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element">
+                        <label [ngClass]="setClassLabel(element.status)" >
+                            {{element.status}}
+                        </label>
+                       </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="group">
+                    <th mat-header-cell *matHeaderCellDef> Group </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: center">{{element.group}}</td>
+                </ng-container>
+    
+    
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Description </th>
+                    <td mat-cell *matCellDef="let element">{{element.description | date : 'dd/MM/yy'}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let element; let i = index;" stickyEnd style="text-align: center;">
+                        <button mat-icon-button [matMenuTriggerFor]="menu"> <mat-icon>more_vert</mat-icon></button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="editEmployee(element)" style="font-weight: bolder;"><mat-icon color="primary">edit</mat-icon>Edit</button>
+                            <button mat-menu-item (click)="detailEmployee(element.id)" style="font-weight: bolder;"><mat-icon color="primary">information</mat-icon>Detail</button>
+                            <button mat-menu-item (click)="deleteEmployee(element.id)" style="font-weight: bolder;"><mat-icon color="warn">delete</mat-icon>Delete</button>
+                  
+                        </mat-menu>
+                    </td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="dataEmployeeListColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: dataEmployeeListColumns;"></tr>
+            </table>
+   
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start">
+        <mat-paginator #paginator 
+        [length]="dataEmployeeList.data.length" 
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="changePage($event)" 
+        showFirstLastButtons
+        ></mat-paginator>
+    </div>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>
