@@ -109,9 +109,11 @@ export class FormEmployeeComponent implements OnInit,OnDestroy {
         if(count > 0){
           this.dataInvalid = true;
           this.dataInvalidChange.emit(this.dataInvalid);
+        }else{
+          this.dataInvalid = false;
+          this.dataInvalidChange.emit(this.dataInvalid);
         }
 
-        console.log(this.dataInvalid,'this.dataInvalid')
         this.setValueDataEmployee();
       }else{
         this.resetData();

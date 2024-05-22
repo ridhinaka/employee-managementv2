@@ -12,7 +12,7 @@
 
     <mat-card-actions fxLayoutAlign="end end" fxLayoutGap="8px">
         <button mat-stroked-button color="warn" (click)="cancelCreate()">Cancel</button>
-        <button mat-raised-button color="primary" (click)="registerNewEmployee()">Register Employee</button>
+        <button mat-raised-button color="primary" (click)="registerNewEmployee()" [disabled]="dataInvalid ? true : false">Register Employee</button>
     </mat-card-actions>
 </mat-card>
 

@@ -17,8 +17,9 @@ import { EmployeeEditModal } from './pages/employee-list/emloyee-edit-modal/empl
 import { FormEmployeeComponent } from './components/form-employee/form-employee.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { KodokComponent } from './app/components/kodok/kodok.component';
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     LoginComponent,
     HeaderComponent,
@@ -31,6 +32,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     DetailEmployeeComponent,
     FormEmployeeComponent,
     SpinnerComponent,
+    KodokComponent,
   ],
   imports: [
     BrowserModule,
